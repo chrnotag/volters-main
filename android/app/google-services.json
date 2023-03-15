@@ -1,0 +1,81 @@
+{
+  "project_info": {
+    "project_number": "545387627332",
+    "project_id": "volters-app",
+    "storage_bucket": "volters-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545387627332:android:b19d5af2c46ae0f11f4d11",
+        "android_client_info": {
+          "package_name": "br.com.volters.volters"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9w_8v8t2J5fiJobA_r4flAq7zNoCM9iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545387627332-a2e0t8ba9jm4j4cukoqriphj4qht7auo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545387627332-7tco2hit4dbihsi11bgkldt9c2v025cl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.volters.voltersApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545387627332:android:f5779f41f5b1b1cd1f4d11",
+        "android_client_info": {
+          "package_name": "com.volters.volters_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545387627332-t3u7l32jfbd6vjsmjpn4c7rjeoc8u4d1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.volters.volters_app",
+            "certificate_hash": "25c55a34e0aeb072b53e5378338b0dd299afc493"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9w_8v8t2J5fiJobA_r4flAq7zNoCM9iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545387627332-a2e0t8ba9jm4j4cukoqriphj4qht7auo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545387627332-7tco2hit4dbihsi11bgkldt9c2v025cl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.volters.voltersApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
