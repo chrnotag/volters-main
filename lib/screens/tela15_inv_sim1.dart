@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:volters/cards/card_simulacao.dart';
 import 'package:volters/cards/card_simulacoes_salvas.dart';
+import 'package:volters/screens/tela16_inv_sim2.dart';
 import 'package:volters/tema.dart';
 import 'package:volters/visao_usuario.dart';
 
@@ -112,7 +113,13 @@ class _CardFundoState extends State<CardFundo> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Tela16InvSim2(),
+                    ));
+              },
               child: Text(
                 'Simular',
                 style: TextStyle(color: Colors.black),
