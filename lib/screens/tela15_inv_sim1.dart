@@ -93,18 +93,12 @@ class _CardFundoState extends State<CardFundo> {
               padding: EdgeInsets.symmetric(vertical: 16),
               child: Container(
                 color: Colors.black,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Quanto você quer investir?'),
-                      Text(
-                        'R\$ 10.000,00',
-                        style: TextStyle(
-                            fontSize: 20, color: TemaVolters.cores.primary),
-                      ),
-                    ],
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Quanto você quer investir?',
+                        labelText: 'Quanto você quer investir?'),
                   ),
                 ),
               ),
@@ -139,9 +133,7 @@ class _CardSSalvaState extends State<CardSSalva> {
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
-          children: [
-            
-          ],
+          children: [],
         ),
       ),
     );
