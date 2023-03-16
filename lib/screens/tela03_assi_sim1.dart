@@ -16,6 +16,13 @@ class Tela03AssiSim1 extends StatefulWidget {
 
 class _Tela03AssiSim1State extends State<Tela03AssiSim1> {
   String nameValue = 'CEEE';
+  List<String> listaItens = [
+    'Mr Poladofull',
+    'Shaco',
+    'Fadinha sem asa',
+    'Minha criatividade',
+    'acabou aqui'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,9 @@ class _Tela03AssiSim1State extends State<Tela03AssiSim1> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: CardConsumo(nameValue: nameValue),
                 ),
-                Card02(),
+                Card02(
+                  listaItens: listaItens,
+                ),
               ],
             ),
           ),
@@ -245,16 +254,10 @@ class _CardConsumoState extends State<CardConsumo> {
                 color: Colors.black,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Valor da sua conta de luz:'),
-                      Text(
-                        'R\$ 400,00',
-                        style: TextStyle(
-                            fontSize: 25, color: TemaVolters.cores.primary),
-                      ),
-                    ],
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Valor dua sua conta de luz',
+                        labelText: 'Valor da sua conta de luz'),
                   ),
                 ),
               ),
@@ -288,7 +291,9 @@ class _CardConsumoState extends State<CardConsumo> {
 //segundo card da tela 1
 
 class Card02 extends StatefulWidget {
-  const Card02({Key? key}) : super(key: key);
+  final List<String> listaItens;
+
+  Card02({Key? key, required this.listaItens}) : super(key: key);
 
   @override
   _Card02State createState() => _Card02State();
@@ -302,22 +307,48 @@ class _Card02State extends State<Card02> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(LocaleKeys.simule_part2,
-                    style: TextStyle(
-                      fontSize: 20,
-                    )).tr(),
-              ],
-            ),
+            Text(LocaleKeys.simule_part2,
+                style: TextStyle(
+                  fontSize: 20,
+                )).tr(),
             const SizedBox(height: 20),
-            Text(LocaleKeys.assinatura_tela03_part2).tr(),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [],
-            ),
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                itemCount: widget.listaItens.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: TemaVolters.cores.primary),
+                          child: Center(
+                            child: Text(
+                              index.toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8),
+                          child: Text(widget.listaItens[index]),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
