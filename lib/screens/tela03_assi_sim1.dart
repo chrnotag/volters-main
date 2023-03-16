@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:provider/provider.dart';
 import 'package:volters/tema.dart';
 import 'package:volters/visao_usuario.dart';
@@ -29,20 +30,21 @@ class _Tela03AssiSim1State extends State<Tela03AssiSim1> {
     return Consumer<VisaoUsuario>(builder: (context, value, child) {
       return Scaffold(
         appBar: AppBar(title: const Text("Simulação Assinatura")),
-        body: Center(
-          child: SizedBox(
-            width: 400,
-            height: double.infinity,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: CardConsumo(nameValue: nameValue),
-                ),
-                Card02(
-                  listaItens: listaItens,
-                ),
-              ],
+        body: SingleChildScrollView(
+          child: Center(
+            child: SizedBox(
+              width: 400,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: CardConsumo(nameValue: nameValue),
+                  ),
+                  Card02(
+                    listaItens: listaItens,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
