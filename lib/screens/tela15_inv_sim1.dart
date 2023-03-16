@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:volters/cards/card_simulacao.dart';
+import 'package:volters/tema.dart';
 import 'package:volters/visao_usuario.dart';
 
 class Tela15InvSim1 extends StatelessWidget {
@@ -7,12 +9,143 @@ class Tela15InvSim1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<VisaoUsuario>(builder: (context, _, __)
-    {
+    return Consumer<VisaoUsuario>(builder: (context, _, __) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Tela15InvSim1")),
-        body: const Center(child: Text("Tela15InvSim1")),
+        appBar: AppBar(title: const Text("Simulação Investimento")),
+        body: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  child: CardFundo(),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                child: CardSSalva(),
+              )
+            ],
+          ),
+        ),
       );
     });
+  }
+}
+
+class CardFundo extends StatefulWidget {
+  const CardFundo({Key? key}) : super(key: key);
+
+  @override
+  _CardFundoState createState() => _CardFundoState();
+}
+
+class _CardFundoState extends State<CardFundo> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Table(
+              children: [
+                TableRow(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TableRowInkWell(
+                        child: Text('Fundo Telhado'),
+                        onTap: () {},
+                      ),
+                    ),
+                  ],
+                ),
+                TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TableRowInkWell(
+                      child: Text('Fundo Marista'),
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
+                TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TableRowInkWell(
+                      child: Text('Fundo Melnick'),
+                      onTap: () {},
+                    ),
+                  ),
+                ])
+              ],
+              border: TableBorder(
+                  top: BorderSide(color: Colors.grey.shade200, width: 1),
+                  left: BorderSide(color: Colors.grey.shade200, width: 1),
+                  right: BorderSide(color: Colors.grey.shade200, width: 1),
+                  bottom: BorderSide(color: Colors.grey.shade200, width: 1),
+                  horizontalInside:
+                      BorderSide(width: 1, color: Colors.grey.shade200)),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Container(
+                color: Colors.black,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Quanto você quer investir?'),
+                        Text(
+                          'R\$ 10.000,00',
+                          style: TextStyle(
+                              fontSize: 20, color: TemaVolters.cores.primary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Simular',
+                style: TextStyle(color: Colors.black),
+              ),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: TemaVolters.cores.primary),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CardSSalva extends StatefulWidget {
+  const CardSSalva({Key? key}) : super(key: key);
+
+  @override
+  _CardSSalvaState createState() => _CardSSalvaState();
+}
+
+class _CardSSalvaState extends State<CardSSalva> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            
+          ],
+        ),
+      ),
+    );
   }
 }
