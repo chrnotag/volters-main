@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:volters/tema.dart';
 import 'package:volters/visao_usuario.dart';
 import 'package:volters/uteis/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -42,6 +43,7 @@ class _Tela03AssiSim1State extends State<Tela03AssiSim1> {
 
 class CardConsumo extends StatefulWidget {
   String nameValue;
+
   CardConsumo({Key? key, required this.nameValue}) : super(key: key);
 
   @override
@@ -51,92 +53,142 @@ class CardConsumo extends StatefulWidget {
 class _CardConsumoState extends State<CardConsumo> {
   @override
   Widget build(BuildContext context) {
-    return  Card(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                LocaleKeys.assine_aqui2,
-                style:
-                TextStyle(fontSize: 20, color: Colors.white),
-              ).tr(),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(LocaleKeys.assine_aqui).tr(),
+                const Text(
+                  LocaleKeys.assine_aqui2,
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ).tr(),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Text(LocaleKeys.assine_aqui).tr(),
+              SizedBox(
+                width: 8,
+              ),
+              SizedBox(
+                width: 200,
+                height: 40,
+                child: DropdownButtonFormField(
+                    alignment: Alignment.center,
+                    dropdownColor: Colors.black,
+                    iconSize: 20,
+                    focusColor: TemaVolters.cores.primary,
+                    menuMaxHeight: 200,
+                    isExpanded: true,
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    decoration: InputDecoration(
+                        fillColor: Colors.black,
+                        filled: true,
+                        contentPadding: const EdgeInsets.only(left: 10),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                    value: widget.nameValue,
+                    borderRadius: BorderRadius.circular(30),
+                    items: <String>['CEEE', 'Light', 'Eletrobrás']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(
+                          value,
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        widget.nameValue = newValue!;
+                      });
+                    }),
+              )
+            ]),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Text(LocaleKeys.assine_aqui2).tr(),
                 SizedBox(
                   width: 8,
                 ),
-                SizedBox(
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    border: Border.all(width: 1, color: Colors.grey.shade300),
+                    shape: BoxShape.rectangle,
+                  ),
                   width: 200,
-                  child: DropdownButtonFormField(
-                      alignment: Alignment.center,
-                      dropdownColor: Colors.black,
-                      iconSize: 30,
-                      isExpanded: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))
+                  height: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('R\$'),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3.0),
+                        child: VerticalDivider(
+                            color: Colors.grey.shade100, thickness: 1),
                       ),
-                      value: widget.nameValue,
-                      borderRadius: BorderRadius.circular(30),
-                      items: <String>[
-                        'CEEE',
-                        'Light',
-                        'Eletrobrás'
-                      ].map<DropdownMenuItem<String>>(
-                              (String value) {
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            );
-                          }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          widget.nameValue = newValue!;
-                        });
-                      }),
+                      Text('KWh'),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3.0),
+                        child: VerticalDivider(
+                            color: Colors.grey.shade100, thickness: 1),
+                      ),
+                      Text('?')
+                    ],
+                  ),
                 )
               ]),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(LocaleKeys.assine_aqui2).tr(),
-              ]),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FilledButton(
-                style: FilledButton.styleFrom(
-                    minimumSize: const Size(110, 40)),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                          const Tela04AssiSim2()));
-                },
-                child: Text(LocaleKeys.simule_desconto_2,
-                    textAlign: TextAlign.center)
-                    .tr(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                color: Colors.black,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Valor da sua conta de luz:'),
+                      Text(
+                        'R\$ 400,00',
+                        style: TextStyle(fontSize: 25, color: TemaVolters.cores.primary),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FilledButton(
+                  style:
+                      FilledButton.styleFrom(minimumSize: const Size(110, 40)),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Tela04AssiSim2()));
+                  },
+                  child: Text(LocaleKeys.simule_desconto_2,
+                          textAlign: TextAlign.center)
+                      .tr(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-
 
 //segundo card da tela 1
 
@@ -177,6 +229,5 @@ class _Card02State extends State<Card02> {
     );
   }
 }
-
 
 //TODO FAZER BOTÃO
