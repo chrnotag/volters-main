@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:volters/cards/card_simulacao.dart';
+import 'package:volters/cards/card_simulacoes_salvas.dart';
 import 'package:volters/tema.dart';
 import 'package:volters/visao_usuario.dart';
 
@@ -9,24 +10,34 @@ class Tela15InvSim1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> listaItens = [
+      'Mr Poladofull',
+      'Shaco',
+      'Fadinha sem asa',
+      'Minha criatividade',
+      'acabou aqui'
+    ];
+
     return Consumer<VisaoUsuario>(builder: (context, _, __) {
       return Scaffold(
         appBar: AppBar(title: const Text("Simulação Investimento")),
-        body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  child: CardFundo(),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    child: CardFundo(),
+                  ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 1.2,
-                child: CardSSalva(),
-              )
-            ],
+                Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  child: Card02(listaItens: listaItens),
+                )
+              ],
+            ),
           ),
         ),
       );
@@ -90,16 +101,13 @@ class _CardFundoState extends State<CardFundo> {
                       BorderSide(width: 1, color: Colors.grey.shade200)),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
               child: Container(
                 color: Colors.black,
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: 'Quanto você quer investir?',
-                        labelText: 'Quanto você quer investir?'),
-                  ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Quanto você quer investir?',
+                      labelText: 'Quanto você quer investir?'),
                 ),
               ),
             ),
@@ -113,27 +121,6 @@ class _CardFundoState extends State<CardFundo> {
                   backgroundColor: TemaVolters.cores.primary),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CardSSalva extends StatefulWidget {
-  const CardSSalva({Key? key}) : super(key: key);
-
-  @override
-  _CardSSalvaState createState() => _CardSSalvaState();
-}
-
-class _CardSSalvaState extends State<CardSSalva> {
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: [],
         ),
       ),
     );
