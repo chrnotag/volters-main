@@ -95,18 +95,16 @@ class _CardFundoState extends State<CardFundo> {
                 color: Colors.black,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Quanto você quer investir?'),
-                        Text(
-                          'R\$ 10.000,00',
-                          style: TextStyle(
-                              fontSize: 20, color: TemaVolters.cores.primary),
-                        ),
-                      ],
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Quanto você quer investir?'),
+                      Text(
+                        'R\$ 10.000,00',
+                        style: TextStyle(
+                            fontSize: 20, color: TemaVolters.cores.primary),
+                      ),
+                    ],
                   ),
                 ),
               ),

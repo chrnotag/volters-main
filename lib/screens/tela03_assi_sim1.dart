@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:volters/tema.dart';
@@ -51,6 +52,10 @@ class CardConsumo extends StatefulWidget {
 }
 
 class _CardConsumoState extends State<CardConsumo> {
+  bool _btn1 = false;
+  bool _btn2 = false;
+  bool _btn3 = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -127,19 +132,108 @@ class _CardConsumoState extends State<CardConsumo> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('R\$'),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: _btn1
+                                ? TemaVolters.cores.primary
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                            ),
+                          ),
+                          child: InkWell(
+                            child: Text(
+                              'R\$',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: _btn1 ? Colors.black : Colors.white,
+                              ),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                _btn1 = !_btn1;
+                                if (_btn2) {
+                                  _btn2 = !_btn2;
+                                }
+
+                                if (_btn3) {
+                                  _btn3 = !_btn3;
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 3.0),
                         child: VerticalDivider(
                             color: Colors.grey.shade100, thickness: 1),
                       ),
-                      Text('KWh'),
+                      Expanded(
+                        child: Container(
+                            color: _btn2
+                                ? TemaVolters.cores.primary
+                                : Colors.transparent,
+                            child: InkWell(
+                              child: Text(
+                                'KWh',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: _btn2 ? Colors.black : Colors.white,
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  _btn2 = !_btn2;
+                                  if (_btn1) {
+                                    _btn1 = !_btn1;
+                                  }
+                                  if (_btn3) {
+                                    _btn3 = !_btn3;
+                                  }
+                                });
+                              },
+                            )),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 3.0),
                         child: VerticalDivider(
                             color: Colors.grey.shade100, thickness: 1),
                       ),
-                      Text('?')
+                      Expanded(
+                          child: Container(
+                              decoration: BoxDecoration(
+                                color: _btn3
+                                    ? TemaVolters.cores.primary
+                                    : Colors.transparent,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                ),
+                              ),
+                              child: InkWell(
+                                child: Text(
+                                  '?',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: _btn3 ? Colors.black : Colors.white,
+                                  ),
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    _btn3 = !_btn3;
+                                    if (_btn1) {
+                                      _btn1 = !_btn1;
+                                    }
+
+                                    if (_btn2) {
+                                      _btn2 = !_btn2;
+                                    }
+                                  });
+                                },
+                              )))
                     ],
                   ),
                 )
@@ -157,7 +251,8 @@ class _CardConsumoState extends State<CardConsumo> {
                       Text('Valor da sua conta de luz:'),
                       Text(
                         'R\$ 400,00',
-                        style: TextStyle(fontSize: 25, color: TemaVolters.cores.primary),
+                        style: TextStyle(
+                            fontSize: 25, color: TemaVolters.cores.primary),
                       ),
                     ],
                   ),
