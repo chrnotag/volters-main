@@ -7,11 +7,14 @@ class Tela17InvCadastro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<VisaoUsuario>(builder: (context, _, __)
-    {
+    return Consumer<VisaoUsuario>(builder: (context, _, __) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Tela17InvCadastro")),
-        body: const Center(child: Text("Tela17InvCadastro")),
+        appBar: AppBar(
+          title: const Text("Tela17InvCadastro"),
+        ),
+        body: const Center(
+          child: Text("Tela17InvCadastro"),
+        ),
       );
     });
   }
